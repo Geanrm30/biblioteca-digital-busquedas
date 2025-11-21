@@ -16,18 +16,18 @@ namespace biblioteca_digital_busquedas
                 new Libro{ Id=4, Titulo="Bases de Datos", Autor="López", Anio=2019, Descripcion="Normalización y SQL." },
             };
 
-            Console.WriteLine("=== Sistema de Búsqueda - Biblioteca Digital ===");
-
             int opcion;
             while (true)
             {
-                Console.WriteLine("\nOpciones:");
+                Console.WriteLine("\n=== Sistema de Búsqueda Biblioteca ===");
                 Console.WriteLine("1. Búsqueda lineal por título");
                 Console.WriteLine("2. Buscar coincidencias en descripción");
+                Console.WriteLine("3. Búsqueda binaria por autor");
+                Console.WriteLine("4. Libro más reciente y más antiguo");
                 Console.Write("Seleccione una opción: ");
 
                 if (int.TryParse(Console.ReadLine(), out opcion))
-                    break; // Entrada válida
+                    break;
                 else
                     Console.WriteLine("Entrada inválida. Debe ingresar un número.");
             }
@@ -35,34 +35,63 @@ namespace biblioteca_digital_busquedas
             switch (opcion)
             {
                 case 1:
-                    Console.Write("Ingrese título exacto del libro: ");
+                    Console.Write("Ingrese título exacto: ");
                     string titulo = Console.ReadLine();
+                    if (string.IsNullOrWhiteSpace(titulo))
+                    {
+                        Console.WriteLine("Debe ingresar un título válido.");
+                        break;
+                    }
 
                     var libroEncontrado = Busquedas.BuscarLibroLineal(libros, titulo);
-
                     if (libroEncontrado != null)
-                        Console.WriteLine($"\nEncontrado: {libroEncontrado.Titulo} ({libroEncontrado.Anio})");
+                        Console.WriteLine($"Encontrado: {libroEncontrado.Titulo} ({libroEncontrado.Anio})");
                     else
-                        Console.WriteLine("\nLibro NO encontrado.");
+                        Console.WriteLine("Libro no encontrado.");
                     break;
 
                 case 2:
-                    Console.Write("Ingrese palabra clave para buscar en la descripción: ");
+                    Console.Write("Ingrese palabra clave: ");
                     string clave = Console.ReadLine();
+                    if (string.IsNullOrWhiteSpace(clave))
+                    {
+                        Console.WriteLine("Debe ingresar una palabra clave válida.");
+                        break;
+                    }
 
                     var listaCoincidencias = Busquedas.BuscarCoincidencias(libros, clave);
-
                     if (listaCoincidencias.Count > 0)
                     {
-                        Console.WriteLine($"\nSe encontraron {listaCoincidencias.Count} resultados:");
+                        Console.WriteLine($"Se encontraron {listaCoincidencias.Count} resultados:");
                         foreach (var libroCoincidente in listaCoincidencias)
-                        {
                             Console.WriteLine($"- {libroCoincidente.Titulo}: {libroCoincidente.Descripcion}");
-                        }
                     }
                     else
+                        Console.WriteLine("No se encontraron coincidencias.");
+                    break;
+
+                case 3:
+                    Console.Write("Ingrese el autor a buscar: ");
+                    string autor = Console.ReadLine();
+                    if (string.IsNullOrWhiteSpace(autor))
                     {
-                        Console.WriteLine("\nNo se encontraron coincidencias.");
+                        Console.WriteLine("Debe ingresar un autor válido.");
+                        break;
+                    }
+
+                    var libroAutor = BusquedaBinaria.BuscarPorAutor(libros, autor);
+                    if (libroAutor != null)
+                        Console.WriteLine($"Encontrado: {libroAutor.Titulo} ({libroAutor.Anio})");
+                    break;
+
+                case 4:
+                    var reciente = BusquedasFecha.LibroMasReciente(libros);
+                    var antiguo = BusquedasFecha.LibroMasAntiguo(libros);
+
+                    if (reciente != null && antiguo != null)
+                    {
+                        Console.WriteLine($"Libro más reciente: {reciente.Titulo} ({reciente.Anio})");
+                        Console.WriteLine($"Libro más antiguo: {antiguo.Titulo} ({antiguo.Anio})");
                     }
                     break;
 

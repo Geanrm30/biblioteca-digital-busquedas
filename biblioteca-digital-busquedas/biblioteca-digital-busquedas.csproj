@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusquedaBinaria.cs" />
     <Compile Include="Busquedas.cs" />
+    <Compile Include="BusquedasFecha.cs" />
     <Compile Include="Libro.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
