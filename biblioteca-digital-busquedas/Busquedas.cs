@@ -10,15 +10,16 @@ namespace biblioteca_digital_busquedas
     {
         public static Libro BuscarLibroLineal(List<Libro> libros, string tituloBuscado)
         {
+            if (libros == null || tituloBuscado == null)
+                return null;
+
             foreach (var libro in libros)
             {
-                if (libro.Titulo.ToLower() == tituloBuscado.ToLower())
-                {
+                if (string.Equals(libro.Titulo, tituloBuscado, StringComparison.OrdinalIgnoreCase))
                     return libro;
-                }
             }
 
-            return null; // No encontrado
+            return null;
         }
         public static List<Libro> BuscarCoincidencias(List<Libro> libros, string palabraClave)
         {
