@@ -20,5 +20,19 @@ namespace biblioteca_digital_busquedas
 
             return null; // No encontrado
         }
+        public static List<Libro> BuscarCoincidencias(List<Libro> libros, string palabraClave)
+        {
+            List<Libro> resultados = new List<Libro>();
+
+            foreach (var libro in libros)
+            {
+                if (libro.Descripcion.ToLower().Contains(palabraClave.ToLower()))
+                {
+                    resultados.Add(libro);
+                }
+            }
+
+            return resultados;
+        }
     }
 }
