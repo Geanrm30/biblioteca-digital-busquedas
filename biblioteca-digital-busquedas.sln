@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35825.156 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "biblioteca-digital-busquedas", "biblioteca-digital-busquedas\biblioteca-digital-busquedas.csproj", "{8FC4C8AE-5AF6-4592-B205-815151B35DF0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8FC4C8AE-5AF6-4592-B205-815151B35DF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FC4C8AE-5AF6-4592-B205-815151B35DF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FC4C8AE-5AF6-4592-B205-815151B35DF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FC4C8AE-5AF6-4592-B205-815151B35DF0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9A62AFDA-B5C4-4086-BEB1-EFBFF0D8A3E9}
+	EndGlobalSection
+EndGlobal
