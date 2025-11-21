@@ -24,6 +24,8 @@ namespace biblioteca_digital_busquedas
                 Console.WriteLine("\nOpciones:");
                 Console.WriteLine("1. Búsqueda lineal por título");
                 Console.WriteLine("2. Buscar coincidencias en descripción");
+                Console.WriteLine("3. Búsqueda binaria por autor");
+                Console.WriteLine("4. Libro más reciente y más antiguo");
                 Console.Write("Seleccione una opción: ");
 
                 if (int.TryParse(Console.ReadLine(), out opcion))
@@ -64,6 +66,23 @@ namespace biblioteca_digital_busquedas
                     {
                         Console.WriteLine("\nNo se encontraron coincidencias.");
                     }
+                    break;
+
+                case 3:
+                    Console.Write("Ingrese el autor a buscar: ");
+                    string autor = Console.ReadLine();
+                    var libroAutor = BusquedaBinaria.BuscarPorAutor(libros, autor);
+                    if (libroAutor != null)
+                        Console.WriteLine($"Encontrado: {libroAutor.Titulo} ({libroAutor.Anio})");
+                    else
+                        Console.WriteLine("Autor no encontrado.");
+                    break;
+
+                case 4:
+                    var reciente = BusquedasFecha.LibroMasReciente(libros);
+                    var antiguo = BusquedasFecha.LibroMasAntiguo(libros);
+                    Console.WriteLine($"Libro más reciente: {reciente.Titulo} ({reciente.Anio})");
+                    Console.WriteLine($"Libro más antiguo: {antiguo.Titulo} ({antiguo.Anio})");
                     break;
 
                 default:
